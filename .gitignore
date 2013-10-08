@@ -1,0 +1,6 @@
+.DS_Store
+*.o
+*.d
+*.a
+CppUTest_tests
+CppUTest/objs/
