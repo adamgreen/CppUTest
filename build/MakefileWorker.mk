@@ -442,7 +442,11 @@ realclean: clean
 
 gcov: test
 ifeq ($(CPPUTEST_USE_VPATH), Y)
-	$(SILENCE)gcov -object-directory=$(CPPUTEST_OBJS_DIR) $(SRC) >> $(GCOV_OUTPUT) 2>> $(GCOV_ERROR)
+	$(SILENCE)for d in $(SRC_DIRS) ; do \
+		for f in $$d/*.c ; do \
+			gcov -object-directory=$(CPPUTEST_OBJS_DIR) $(call __src_to,.o,$$f) >> $(GCOV_OUTPUT) 2>>$(GCOV_ERROR) ; \
+		done \
+	done
 else
 	$(SILENCE)for d in $(SRC_DIRS) ; do \
 		for f in $(CPPUTEST_OBJS_DIR)/$$d/*.o ; do \
