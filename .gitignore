@@ -2,5 +2,6 @@
 *.o
 *.d
 *.a
+*.gcno
+*.gcda
 CppUTest_tests
-CppUTest/objs/
