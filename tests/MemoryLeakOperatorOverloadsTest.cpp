@@ -260,7 +260,8 @@ TEST(OutOfMemoryTestsForOperatorNew, FailingNewArrayOperatorReturnsNull)
 TEST(OutOfMemoryTestsForOperatorNew, FailingNewOperatorThrowsAnExceptionWhenUsingStdCppNewWithoutOverride)
 {
 	try {
-		new char;
+		volatile char* pChar = new char;
+		*pChar = '\0';
 		FAIL("Should have thrown an exception!")
 	}
 	catch (std::bad_alloc&) {
@@ -270,7 +271,8 @@ TEST(OutOfMemoryTestsForOperatorNew, FailingNewOperatorThrowsAnExceptionWhenUsin
 TEST(OutOfMemoryTestsForOperatorNew, FailingNewArrayOperatorThrowsAnExceptionWhenUsingStdCppNewWithoutOverride)
 {
 	try {
-		new char[10];
+		volatile char* pChar = new char[10];
+		*pChar = '\0';
 		FAIL("Should have thrown an exception!")
 	}
 	catch (std::bad_alloc&) {
