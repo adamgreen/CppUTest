@@ -13,6 +13,7 @@ sort %tempFilename% /O %tempSortedFilename%
 
 set lastLine=""
 for /f "tokens=* delims=:" %%i in (%tempSortedFilename%) do call :Unique "%%i"
+echo.>>%outputFilename%
 
 del %tempFilename% >nul 2>nul
 del %tempSortedFilename% >nul 2>nul
