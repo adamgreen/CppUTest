@@ -415,6 +415,11 @@ SimpleString StringFrom(const std::string& value)
 	return SimpleString(value.c_str());
 }
 
+SimpleString StringFrom(uintptr_t i)
+{
+	return StringFromFormat("%20u (0x%016x)", i, i);
+}
+
 SimpleString StringFrom(uint32_t i)
 {
 	return StringFromFormat("%10u (0x%08x)", i, i);
